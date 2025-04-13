@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Demande de Réinitialisation de Mot de Passe</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'/>
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px; /* Taille par défaut plus lisible */
+            line-height: 1.6; /* Espacement des lignes amélioré */
+            color: #333333; /* Couleur du texte plus foncée mais douce */
+        }
+
+        /* Style du bouton (important pour la clarté du clic) */
+        .button {
+            background-color: #4CAF50; /* Bouton vert */
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px; /* Coins arrondis */
+        }
+
+        /* Style du lien (plus visible) */
+        a {
+            color: #007bff; /* Une couleur de lien plus standard */
+            text-decoration: none; /* Supprimer le soulignement */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Ajouter un soulignement au survol */
+        }
+
+    </style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f4f4f4;">
+
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse; background-color: #ffffff; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin-top: 20px; margin-bottom: 20px;">
+    <tr>
+        <td align="center" bgcolor="#3498db" style="padding: 40px 0 30px 0; color: #ffffff;">
+            <h1 style="font-size: 24px; margin: 0;">Réinitialisation du Mot de Passe</h1>
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#ffffff" style="padding: 40px 30px 40px 30px;">
+            <p th:text="${'Cher(e) ' + user.firstName + ' ' + user.lastName}" style="font-size: 18px; margin-bottom: 20px;"></p>
+            <p style="margin-bottom: 20px;">Vous avez demandé une réinitialisation de votre mot de passe. Veuillez cliquer sur le bouton ci-dessous pour le réinitialiser :</p>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td>
+                        <table border="0" cellspacing="0" cellpadding="0" align="center">
+                            <tr>
+                                <td align="center">
+                                    <a th:href="${resetUrl}" target="_blank" data-saferedirecturl="${resetUrl}">Réinitialiser Votre Mot de Passe</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+            <p style="margin-top: 20px;">Si vous n'avez pas demandé la réinitialisation de votre mot de passe, veuillez ignorer cet e-mail.</p>
+            <p style="margin-top: 30px;">Merci,</p>
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor="#f0f0f0" style="padding: 30px 30px 30px 30px; font-size: 14px; color: #777777; text-align: center;">
+            <p th:text="${signature}" style="margin: 0;"></p>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
