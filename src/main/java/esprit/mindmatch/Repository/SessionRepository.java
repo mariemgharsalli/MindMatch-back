@@ -14,5 +14,5 @@ public interface SessionRepository extends JpaRepository<Session, Long> {
     List<Session> findByArchived(boolean archived);
     List<Session> findByArchivedAndArchiveDateBefore(boolean archived, Date date);
 
-
+    List<Session> findByScheduledForDeletion(boolean scheduledForDeletion);
 }

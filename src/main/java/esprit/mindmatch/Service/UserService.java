@@ -156,13 +156,13 @@ public class UserService {
         return "Mot de passe changé avec succès.";
     }
 
-    public void resetPasswordRequest(PasswordResetRequest request) throws MessagingException {
+   /* public void resetPasswordRequest(PasswordResetRequest request) throws MessagingException {
         User user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new IllegalArgumentException("Utilisateur introuvable avec cet email."));
         sendResetPasswordEmail(user);
     }
-
-    private void sendResetPasswordEmail(User user) throws MessagingException {
+*/
+   /* private void sendResetPasswordEmail(User user) throws MessagingException {
         String tokenStr = UUID.randomUUID().toString();
         Token token = Token.builder()
                 .token(tokenStr)
@@ -180,7 +180,7 @@ public class UserService {
                 "Réinitialisation du mot de passe"
         );
     }
-
+*/
     public void resetPassword(String token, PasswordResetRequest request) {
         Token savedToken = tokenRepository.findByToken(token)
                 .orElseThrow(() -> new RuntimeException("Token invalide."));

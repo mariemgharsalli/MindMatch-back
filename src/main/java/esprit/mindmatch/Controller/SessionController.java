@@ -68,11 +68,25 @@ public class SessionController {
         boolean isDeleted = sessionService.deleteSession(id);
         return isDeleted ? ok("Session deleted successfully") : ResponseEntity.status(HttpStatus.NOT_FOUND).body("Competition not found");
     }
-
-    @PutMapping("/updateCompetition/{id}")
-    public ResponseEntity<String> updateSession(@PathVariable Long id, @RequestBody Session updatedSession) {
-        return sessionService.updateSession(id, updatedSession);
+    @PostMapping("/mark-for-deletion/{id}")
+    public ResponseEntity<String> markForDeletion(@PathVariable Long id) {
+        try {
+            sessionService.markSessionForDeletion(id);
+            return ResponseEntity.ok("Session marked for deletion");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
+    @PutMapping("/updateSession/{id}")
+    public ResponseEntity<Session> updateSession(@PathVariable Long id, @RequestBody Session updatedSession) {
+        try {
+            Session updated = sessionService.updateSession(id, updatedSession);
+            return ResponseEntity.ok(updated);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+    }
+
 
     @PostMapping(value = "/images/upload/{sessionId}", consumes = "multipart/form-data")
     public ResponseEntity<Session> uploadUserImages(

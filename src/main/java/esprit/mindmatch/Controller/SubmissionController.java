@@ -15,6 +15,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/submissions")
@@ -62,6 +63,12 @@ public class SubmissionController {
     ) {
         return submissionService.updateSubmissionStatus(submissionId, status);
     }
+    @DeleteMapping("/submissions/{id}")
+    public ResponseEntity<Void> deleteSubmission(@PathVariable Long id) {
+        submissionService.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
 
     @GetMapping("/document")
     public ResponseEntity<ByteArrayResource> getDocument(@RequestParam String filePath) {
@@ -82,5 +89,11 @@ public class SubmissionController {
             return ResponseEntity.internalServerError().build();
         }
     }
+// SubmissionController.java
 
+    @GetMapping("/session-statistics")
+    public ResponseEntity<Map<String, Object>> getSessionStatistics() {
+        Map<String, Object> statistics = submissionService.getSessionStatistics();
+        return ResponseEntity.ok(statistics);
+    }
 }

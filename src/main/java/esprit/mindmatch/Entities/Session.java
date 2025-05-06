@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -33,6 +35,8 @@ public class Session {
     private Boolean archived = false;
     private String speakerName;
     private String speakerEmail;
+    @Column(nullable = false)
+    private Boolean scheduledForDeletion = false;
     @Temporal(TemporalType.TIMESTAMP)
     private Date archiveDate;
 

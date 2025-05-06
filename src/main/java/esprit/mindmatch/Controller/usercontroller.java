@@ -83,14 +83,14 @@ public class usercontroller {
     }
 
     // Demande de réinitialisation de mot de passe
-    @PostMapping("/password-reset-request")
+   /* @PostMapping("/password-reset-request")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public ResponseEntity<?> resetPasswordRequest(@RequestBody PasswordResetRequest passwordResetRequest)
             throws MessagingException {
         userService.resetPasswordRequest(passwordResetRequest);
         return ResponseEntity.accepted().body("Email de réinitialisation envoyé.");
     }
-
+*/
     // Réinitialisation avec token
     @PatchMapping("/password-reset/{token}")
     public ResponseEntity<?> resetPassword(
